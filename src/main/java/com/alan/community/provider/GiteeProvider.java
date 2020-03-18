@@ -64,7 +64,6 @@ public class GiteeProvider {
             String string = response.body().string();
             //把string的json解析称java object
             GiteeUser giteeUser = JSON.parseObject(string, GiteeUser.class);
-            System.out.println(giteeUser.getName());
             return giteeUser;
         } catch (IOException e) {
             e.printStackTrace();

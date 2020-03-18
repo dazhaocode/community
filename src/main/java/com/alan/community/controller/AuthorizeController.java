@@ -2,12 +2,17 @@ package com.alan.community.controller;
 
 import com.alan.community.dto.AccessTokenDTO;
 import com.alan.community.dto.GiteeUser;
+import com.alan.community.mapper.UserMapper;
+import com.alan.community.model.User;
 import com.alan.community.provider.GiteeProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 /**
  * @author alan
@@ -18,6 +23,9 @@ public class AuthorizeController {
 
     @Autowired
     private GiteeProvider giteeProvider;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Value("${gitee.client.id}")
     private String client_id;
@@ -32,9 +40,8 @@ public class AuthorizeController {
     private  String Grant_type;
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name = "code")String code){
-
-
+    public String callback(@RequestParam(name = "code")String code,
+                           HttpServletRequest request){
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setCode(code);
         accessTokenDTO.setClient_id(client_id);
@@ -42,9 +49,22 @@ public class AuthorizeController {
         accessTokenDTO.setRedirect_uri(redirect_uri);
         accessTokenDTO.setGrant_type(Grant_type);
         String accessToken = giteeProvider.getAccessToken(accessTokenDTO);
-        GiteeUser user = giteeProvider.getUser(accessToken);
-        System.out.println(user.getName());
-        return "index";
+        GiteeUser giteeUser = giteeProvider.getUser(accessToken);
+        if (giteeUser!=null){
+            User user = new User();
+            user.setToken(UUID.randomUUID().toString());
+            user.setName(giteeUser.getName());
+            user.setAccountId(String.valueOf(giteeUser.getId()));
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreate());
+            userMapper.addUser(user);
+            //login success
+            request.getSession().setAttribute("CurrentUser",giteeUser);
+            return "redirect:/";
+        }else {
+            //login fail
+            return "redirect:/";
+        }
 
     }
 }
