@@ -60,6 +60,7 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(giteeUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
+            user.setAvatarUrl(giteeUser.getAvatarUrl());
             userMapper.addUser(user);
             //login success
             response.addCookie(new Cookie("token",token));

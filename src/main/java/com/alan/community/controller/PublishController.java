@@ -60,7 +60,7 @@ public class PublishController {
             return "publish";
         }
 
-        question.setCreator_id(user.getId());
+        question.setCreatorId(user.getId());
         question.setGmtCreate(System.currentTimeMillis());
         question.setGmtModified(question.getGmtCreate());
         questionMapper.addQuestion(question);
