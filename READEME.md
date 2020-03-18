@@ -14,4 +14,13 @@ create table user
 	constraint user_pk
 		primary key (id)
 );
+alter table USER
+    add bio varchar(256);
 ```
+
+```bash
+    mvn flyway:migrate
+```
+
+##问题发起
+
