@@ -18,4 +18,5 @@ public interface UserMapper {
 
     @Select("select * from user where id=#{creator_id}")
     User selectByUserId(@Param("creator_id") Integer creator_id);
+
 }

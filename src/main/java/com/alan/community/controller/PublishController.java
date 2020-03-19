@@ -42,24 +42,11 @@ public class PublishController {
             model.addAttribute("msg","标签不能为空！");
             return "publish";
         }
-
-
-
-        User user = null;
-        for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equals("token")) {
-                String token = cookie.getValue();
-                user = userMapper.selectByToken(token);
-                if (user != null)
-                    request.getSession().setAttribute("CurrentUser", user);
-                break;
-            }
-        }
+        User user = (User) request.getSession().getAttribute("CurrentUser");
         if (user == null) {
             model.addAttribute("msg", "你还没有登陆！");
             return "publish";
         }
-
         question.setCreatorId(user.getId());
         question.setGmtCreate(System.currentTimeMillis());
         question.setGmtModified(question.getGmtCreate());

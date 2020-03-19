@@ -6,50 +6,19 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/community.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui/css/layui.css}"/>
+    <script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
 
 
 </head>
 <body class="body">
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" th:href="@{/index}" >微社区</a>
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索话题">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li th:if="${session.CurrentUser!=null}">
-                    <a th:href="@{/publish}">发布问题</a>
-                </li>
-                <li th:if="${session.CurrentUser==null}">
-                    <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">登录</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" aria-expanded="false" th:if="${session.CurrentUser!=null}">[[${session.CurrentUser.getName()}]]
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">消息中心</a></li>
-                        <li><a href="#">个人资料</a></li>
-                        <li><a href="#">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    <div th:replace="common::navbar"></div>
     <div class="container-fluid main">
         <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
                 <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;发现</h3>
                 <hr>
-                <div class="media" th:each="question :${questions}">
+                <div class="media" th:each="question :${paginationDTO.questionDTOS}">
                     <div class="media-left">
                         <a href="#">
                             <img class="media-object img-circle" th:src="${question.getUser().getAvatarUrl()}">
@@ -70,8 +39,30 @@
                 <h3>热门话题</h3>
             </div>
         </div>
+        <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" id="page"></div>
     </div>
 </body>
-<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+    layui.use('laypage', function(){
+        let laypage = layui.laypage;
+        laypage.render({
+            elem: 'page',
+            count:[[${paginationDTO.totalRows}]],
+            limit:[[${paginationDTO.pageSize}]],
+            curr:[[${paginationDTO.currentPage}]],
+            groups:3,
+            prev:'上一页',
+            next:'下一页',
+            layout:['count','prev','page','next','limit','refresh','skip'],
+            jump: function(obj, first){
+                if(!first){
+                    //$("#${param.bodyID}").load("${url}?pageNo="+obj.curr+"&pageSize="+obj.limit);
+                    location.href="/?currentPage="+obj.curr+"&pageSize="+obj.limit
+                }
+            }
+        });
+    });
+</script>
 </html>

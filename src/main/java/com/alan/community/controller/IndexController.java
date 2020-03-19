@@ -1,11 +1,13 @@
 package com.alan.community.controller;
 
+import com.alan.community.dto.PaginationDTO;
 import com.alan.community.dto.QuestionDTO;
 import com.alan.community.mapper.QuestionMapper;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
 import com.alan.community.model.User;
 import com.alan.community.service.QuestionService;
+import javafx.scene.control.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,19 +28,9 @@ public class IndexController {
     @Autowired
     private QuestionService questionService;
     @GetMapping({"/","/index"})
-    public String toIndex(HttpServletRequest request, Model model){
-        for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equals("token")) {
-                String token = cookie.getValue();
-                User user = userMapper.selectByToken(token);
-                if (user!=null)
-                    request.getSession().setAttribute("CurrentUser", user);
-                break;
-            }
-        }
-
-        List<QuestionDTO> questionList=questionService.queryAllQuestion();
-        model.addAttribute("questions",questionList);
+    public String toIndex(HttpServletRequest request, Model model,PaginationDTO pageDTO){
+        PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO,null);
+        model.addAttribute("paginationDTO",paginationDTO);
         return "index";
     }
 }

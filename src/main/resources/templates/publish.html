@@ -11,40 +11,7 @@
 </head>
 <body class="body">
     <!--导航-->
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">微社区</span>
-        </button>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">微社区</a>
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索话题">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li th:if="${session.CurrentUser==null}">
-                    <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">登录</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" aria-expanded="false" th:if="${session.CurrentUser!=null}">[[${session.CurrentUser.getName()}]]
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">消息中心</a></li>
-                        <li><a href="#">个人资料</a></li>
-                        <li><a href="#">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    <div th:replace="common::navbar"></div>
     <!--content-->
     <div class="container-fluid main">
         <div class="row">
@@ -81,6 +48,6 @@
 
 
 </body>
-<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 </html>

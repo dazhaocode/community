@@ -1,10 +1,13 @@
 package com.alan.community.service;
 
+import com.alan.community.dto.PaginationDTO;
 import com.alan.community.dto.QuestionDTO;
 import com.alan.community.mapper.QuestionMapper;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
 import com.alan.community.model.User;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +26,11 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
-    public List<QuestionDTO> queryAllQuestion() {
+    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO,Integer id) {
         List<QuestionDTO> questionDTOS = new ArrayList<>();
-        List<Question> questionList = questionMapper.queryAllQuestion();
+        PageHelper.startPage(paginationDTO.getCurrentPage(),paginationDTO.getPageSize());
+        List<Question> questionList = questionMapper.queryAllQuestion(id);
+        int total = (int) new PageInfo<>(questionList).getTotal();
         for (Question question : questionList) {
             User user = userMapper.selectByUserId(question.getCreatorId());
             QuestionDTO questionDTO = new QuestionDTO();
@@ -33,6 +38,10 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOS.add(questionDTO);
         }
-        return questionDTOS;
+        paginationDTO.setTotalRows(total);
+        paginationDTO.setQuestionDTOS(questionDTOS);
+        return paginationDTO;
     }
+
+
 }
