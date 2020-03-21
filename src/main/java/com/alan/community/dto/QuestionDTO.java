@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QuestionDTO {
     private Integer id;
-    private Integer creator_id;
+    private Integer creatorId;
     private String title;
     private String content;
     private String tag;

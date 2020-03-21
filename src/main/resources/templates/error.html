@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/community.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui/css/layui.css}"/>
+    <script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
+
+
+</head>
+<body class="body">
+    <div th:replace="common::navbar"></div>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h3>出错啦....</h3>
+            <p th:text="${msg}"></p>
+            <p><a class="layui-btn layui-btn-lg layui-btn-radius" th:href="@{/}" role="button">返回首页</a></p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+</html>

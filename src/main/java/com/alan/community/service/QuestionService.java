@@ -2,10 +2,14 @@ package com.alan.community.service;
 
 import com.alan.community.dto.PaginationDTO;
 import com.alan.community.dto.QuestionDTO;
+import com.alan.community.exception.CustomizeErrorCode;
+import com.alan.community.exception.CustomizeException;
 import com.alan.community.mapper.QuestionMapper;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
+import com.alan.community.model.QuestionExample;
 import com.alan.community.model.User;
+import com.alan.community.model.UserExample;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -26,13 +31,18 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
-    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO,Integer id) {
+    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO,Integer creatorId) {
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         PageHelper.startPage(paginationDTO.getCurrentPage(),paginationDTO.getPageSize());
-        List<Question> questionList = questionMapper.queryAllQuestion(id);
+        QuestionExample questionExample = new QuestionExample();
+        List<Question> questionList;
+        if (creatorId != null) {
+            questionExample.createCriteria().andCreatorIdEqualTo(creatorId);
+        }
+        questionList= questionMapper.selectByExampleWithBLOBs(questionExample);
         int total = (int) new PageInfo<>(questionList).getTotal();
         for (Question question : questionList) {
-            User user = userMapper.selectByUserId(question.getCreatorId());
+            User user = userMapper.selectByPrimaryKey(question.getCreatorId());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question,questionDTO);
             questionDTO.setUser(user);
@@ -43,5 +53,34 @@ public class QuestionService {
         return paginationDTO;
     }
 
+    public QuestionDTO queryById(Integer id) {
+        Question question = questionMapper.selectByPrimaryKey(id);
+        if (question==null) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
+        User user = userMapper.selectByPrimaryKey(question.getCreatorId());
+        QuestionDTO questionDTO = new QuestionDTO();
+        BeanUtils.copyProperties(question,questionDTO);
+        questionDTO.setUser(user);
+        return  questionDTO;
+    }
 
+    public void addQuestion(Question question) {
+        questionMapper.insert(question);
+    }
+
+    public void addOrUpdateQuestion(Question question) {
+        if (question.getId() == null) {
+            question.setGmtCreate(System.currentTimeMillis());
+            question.setGmtModified(question.getGmtCreate());
+            addQuestion(question);
+        }
+        else {
+            question.setGmtModified(System.currentTimeMillis());
+            int update = questionMapper.updateByPrimaryKeySelective(question);
+            if (update!=1) {
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
+        }
+    }
 }

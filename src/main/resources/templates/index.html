@@ -25,7 +25,10 @@
                         </a>
                     </div>
                     <div class="media-body">
-                        <h3 class="media-heading" th:text="${question.getTitle()}"></h3>
+                        <h3 class="media-heading">
+                            <a class="" th:href="@{'/question/details/'+${question.getId()}}" th:text="${question.getTitle()}">
+                            </a>
+                        </h3>
                         <span th:text="${question.getContent()}"></span><br>
                         <span class="media-text">
                             • <span th:text="${question.getCommentCount()}"></span>个回复

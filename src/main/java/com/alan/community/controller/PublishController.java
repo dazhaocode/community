@@ -1,16 +1,14 @@
 package com.alan.community.controller;
 
-import com.alan.community.mapper.QuestionMapper;
-import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
 import com.alan.community.model.User;
+import com.alan.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -19,13 +17,11 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class PublishController {
+
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
     @GetMapping("/publish")
     public String publish(){
-
         return "publish";
     }
     @PostMapping("/publish")
@@ -48,11 +44,10 @@ public class PublishController {
             return "publish";
         }
         question.setCreatorId(user.getId());
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
-        questionMapper.addQuestion(question);
+        questionService.addOrUpdateQuestion(question);
 
         return "redirect:/";
 
     }
+
 }

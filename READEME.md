@@ -20,6 +20,7 @@ alter table USER
 
 ```bash
     mvn flyway:migrate
+    mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
 
 ##问题发起

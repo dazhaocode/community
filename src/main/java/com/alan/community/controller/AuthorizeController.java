@@ -5,6 +5,7 @@ import com.alan.community.dto.GiteeUser;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.User;
 import com.alan.community.provider.GiteeProvider;
+import com.alan.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class AuthorizeController {
     private GiteeProvider giteeProvider;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @Value("${gitee.client.id}")
     private String client_id;
@@ -58,10 +59,8 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(giteeUser.getName());
             user.setAccountId(String.valueOf(giteeUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
             user.setAvatarUrl(giteeUser.getAvatarUrl());
-            userMapper.addUser(user);
+            userService.addOrUpdateUser(user);
             //login success
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
@@ -70,5 +69,14 @@ public class AuthorizeController {
             return "redirect:/";
         }
 
+    }
+
+    @GetMapping("/logOut")
+    public String logOut(HttpServletRequest request,HttpServletResponse response){
+        request.getSession().removeAttribute("CurrentUser");
+        Cookie cookie=new Cookie("token",null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 }

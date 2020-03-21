@@ -25,7 +25,8 @@
                     <a th:href="@{/publish}">发布问题</a>
                 </li>
                 <li th:if="${session.CurrentUser==null}">
-                    <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">登录</a></li>
+                    <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">
+                        登录</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                        role="button" aria-haspopup="true" aria-expanded="false" th:if="${session.CurrentUser!=null}">
@@ -34,7 +35,7 @@
                     <ul class="dropdown-menu">
                         <li><a th:href="@{'/profile?action=questions'}">我的问题</a></li>
                         <li><a href="#">个人资料</a></li>
-                        <li><a href="#">退出登录</a></li>
+                        <li><a th:href="@{/logOut}">退出登录</a></li>
                     </ul>
                 </li>
             </ul>
