@@ -20,14 +20,14 @@ public class QuestionController {
     private QuestionService questionService;
 
     @GetMapping("/details/{id}")
-    public String doQuestion(@PathVariable("id")Integer id, Model model){
+    public String doQuestion(@PathVariable("id") Long id, Model model){
         QuestionDTO questionDTO = questionService.queryById(id);
-        questionService.incrViewCount(id);
+        questionService.incrViewOrCommentOrLikeCount(id);
         model.addAttribute("question",questionDTO);
         return "question";
     }
     @GetMapping("/edit/{id}")
-    public String editQuestion(@PathVariable("id")Integer id, Model model){
+    public String editQuestion(@PathVariable("id") Long id, Model model){
         QuestionDTO questionDTO = questionService.queryById(id);
         model.addAttribute("question",questionDTO);
         return "publish";

@@ -10,5 +10,7 @@ import java.util.List;
 @Repository
 public interface QuestionExtMapper {
 
-    void incrViewCount(Question question);
+
+
+    void incrViewOrCommentOrLike(Question question);
 }

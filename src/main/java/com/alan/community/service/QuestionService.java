@@ -10,7 +10,6 @@ import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
 import com.alan.community.model.QuestionExample;
 import com.alan.community.model.User;
-import com.alan.community.model.UserExample;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -18,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -34,7 +32,7 @@ public class QuestionService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
-    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO,Integer creatorId) {
+    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO, Long creatorId) {
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         PageHelper.startPage(paginationDTO.getCurrentPage(),paginationDTO.getPageSize());
         QuestionExample questionExample = new QuestionExample();
@@ -56,7 +54,7 @@ public class QuestionService {
         return paginationDTO;
     }
 
-    public QuestionDTO queryById(Integer id) {
+    public QuestionDTO queryById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if (question==null) {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
@@ -76,6 +74,9 @@ public class QuestionService {
         if (question.getId() == null) {
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setCommentCount(0L);
+            question.setViewCount(0L);
+            question.setLikeCount(0L);
             addQuestion(question);
         }
         else {
@@ -87,11 +88,10 @@ public class QuestionService {
         }
     }
 
-    public void incrViewCount(Integer id) {
+    public void incrViewOrCommentOrLikeCount(Long id) {
         Question question=new Question();
         question.setId(id);
-        question.setViewCount(1);
-        questionExtMapper.incrViewCount(question);
-
+        question.setViewCount(1L);
+        questionExtMapper.incrViewOrCommentOrLike(question);
     }
 }

@@ -7,12 +7,18 @@ package com.alan.community.exception;
 public class CustomizeException extends RuntimeException {
 
     private  String msg;
+    private  Integer code;
 
    public  CustomizeException(ICustomizeErrorCode errorCode){
+       this.code=errorCode.getCode();
        this.msg=errorCode.getMsg();
    }
 
     public String getMsg() {
         return msg;
+    }
+
+    public Integer getCode() {
+        return code;
     }
 }
