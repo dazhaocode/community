@@ -4,6 +4,7 @@ import com.alan.community.dto.PaginationDTO;
 import com.alan.community.dto.QuestionDTO;
 import com.alan.community.exception.CustomizeErrorCode;
 import com.alan.community.exception.CustomizeException;
+import com.alan.community.mapper.QuestionExtMapper;
 import com.alan.community.mapper.QuestionMapper;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
@@ -30,6 +31,8 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
     public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO,Integer creatorId) {
         List<QuestionDTO> questionDTOS = new ArrayList<>();
@@ -82,5 +85,13 @@ public class QuestionService {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
+    }
+
+    public void incrViewCount(Integer id) {
+        Question question=new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incrViewCount(question);
+
     }
 }
