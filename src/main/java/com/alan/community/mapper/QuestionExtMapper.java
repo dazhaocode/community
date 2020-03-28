@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface QuestionExtMapper {
 
-
-
     void incrViewOrCommentOrLike(Question question);
+
+    List<Question> selectRelated(Question question);
 }

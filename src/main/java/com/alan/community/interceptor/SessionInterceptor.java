@@ -1,6 +1,7 @@
 package com.alan.community.interceptor;
 
 import com.alan.community.model.User;
+import com.alan.community.service.NotificationService;
 import com.alan.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,8 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private NotificationService notificationService;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
              Cookie[] cookies = request.getCookies();
@@ -26,8 +29,11 @@ public class SessionInterceptor implements HandlerInterceptor {
                     if (cookie.getName().equals("token")) {
                         String token = cookie.getValue();
                         User user = userService.selectByToken(token);
-                        if (user != null)
+                        if (user != null) {
                             request.getSession().setAttribute("CurrentUser", user);
+                            Long unreadCount = notificationService.unreadCount(user.getId());
+                            request.getSession().setAttribute("unreadCount",unreadCount);
+                        }
                         break;
                     }
                 }

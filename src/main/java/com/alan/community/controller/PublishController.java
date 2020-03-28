@@ -1,5 +1,9 @@
 package com.alan.community.controller;
 
+import com.alan.community.cache.TagCache;
+import com.alan.community.dto.ResultDTO;
+import com.alan.community.exception.CustomizeErrorCode;
+import com.alan.community.exception.CustomizeException;
 import com.alan.community.model.Question;
 import com.alan.community.model.User;
 import com.alan.community.service.QuestionService;
@@ -8,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,33 +28,29 @@ public class PublishController {
     @Autowired
     private QuestionService questionService;
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
     @PostMapping("/publish")
-    public String doPublish(Question question, Model model, HttpServletRequest request) {
-
-        if (question.getTitle().equals("")) {
-            model.addAttribute("msg","标题不能为空！");
-            return "publish";
-        }
-        if (question.getContent().equals("")) {
-            model.addAttribute("msg","内容不能为空！");
-            return "publish";
-        }if (question.getTag().equals("")) {
-            model.addAttribute("msg","标签不能为空！");
-            return "publish";
-        }
+    @ResponseBody
+    public ResultDTO doPublish(Question question, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("CurrentUser");
         if (user == null) {
-            model.addAttribute("msg", "你还没有登陆！");
-            return "publish";
+          return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
+        }
+        String filterInvalid = TagCache.filterInvalid(question.getTag());
+        if (StringUtils.isEmptyOrWhitespace(filterInvalid)) {
+            return ResultDTO.errorOf(CustomizeErrorCode.INVALID_TAG);
         }
         question.setCreatorId(user.getId());
-        questionService.addOrUpdateQuestion(question);
-
-        return "redirect:/";
-
+        try {
+            questionService.addOrUpdateQuestion(question);
+        } catch (CustomizeException e) {
+         return ResultDTO.errorOf(e.getCode(),e.getMsg());
+        }
+        return ResultDTO.successOf();
     }
 
 }

@@ -27,7 +27,7 @@ public class CustomizeExceptionHandler {
     ModelAndView handleControllerException(Throwable ex, Model model,HttpServletRequest request,HttpServletResponse response) {
         String contentType = request.getContentType();
         ResultDTO resultDTO;
-        if (contentType.equals("application/json")) {
+        if (contentType!=null&& contentType.equals("application/json")) {
             //返回json
             //这个地方存在一定不需要成分 待思考。。。。
             if (ex instanceof CustomizeException) {

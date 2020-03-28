@@ -6,6 +6,11 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/community.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/layui/css/layui.css}"/>
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    c
+    <script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
 
 
 </head>
@@ -15,10 +20,10 @@
     <!--content-->
     <div class="container-fluid main">
         <div class="row">
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 border-right" >
                 <h2><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>发布问题</h2>
                 <hr>
-                <form th:action="@{/publish}" th:method="post">
+                <form th:id="questionForm">
                     <input th:name="id" th:value="${question==null}?'':${question.getId()}" hidden>
                     <div class="form-group">
                         <label for="title">问题标题</label>
@@ -30,11 +35,30 @@
                     </div>
                     <div class="form-group">
                         <label for="tag">添加标签</label>
-                        <input type="text"  class="form-control" id="tag" th:value="${question}!=null ? ${question.getTag()}:''"  th:name="tag" placeholder="输入标签逗号分隔" >
+                        <input autocomplete="off" type="text" onfocus="showTag(this)"  class="form-control" id="tag" th:value="${question}!=null ? ${question.getTag()}:''"  th:name="tag" placeholder="输入标签,以逗号分隔" >
                     </div>
-                    <span class="alert alert-danger alert-dismissible col-lg-6" th:if="${msg!=null}" th:text="${msg}"></span>
-                    <button type="submit" class="btn btn-success btn-publish col-lg-3">提交问题</button>
+                        <div id="tagContent"  hidden="hidden" >
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" th:each="tag ,tagStatus:${tags}" th:class="${tagStatus.first? 'active tab-pane':'tab-pane'}">
+                                    <a th:href="'#'+${tag.getCategoryName()}" th:text="${tag.getCategoryName()}" role="tab" data-toggle="tab">
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" th:class="${tagStatus.first? 'active tab-pane':'tab-pane'}" th:id="${tagCategory.getCategoryName()}" th:each="tagCategory,tagStatus:${tags}">
+                                    <span class="label label-info question-tag" th:each="selectTag: ${tagCategory.getTagCaches()}" >
+                                            <span class="glyphicon glyphicon-tags"></span>
+                                            <span onclick="selectTag(this)" th:name="tag" th:data-tag="${selectTag}" th:text="${selectTag}"></span>
+                                    </span>
+                                </div>
+                                </div>
+                            </div>
                 </form>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                <button type="button" onclick="publish()" class="btn btn-success btn-publish">提交问题</button>
+                </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" >
                 <h3>问题发起指南</h3>
@@ -44,11 +68,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 </body>
-<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
 </html>

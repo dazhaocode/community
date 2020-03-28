@@ -7,26 +7,22 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/community.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/lib/layui/css/layui.css}"/>
-    <script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
-
-
 </head>
 <body class="body">
     <div th:replace="~{common::navbar}"></div>
     <div class="container-fluid main">
         <div class="row">
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 border-right" >
                 <h3><span th:text="${sectionName}"></span></h3>
                 <hr>
-                <div class="media" th:each="question :${paginationDTO.questionDTOS}">
+                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" th:if="${section=='questions'}" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media media-cus border-bottom" th:each="question :${paginationDTO.data}">
                     <div class="media-left">
-                        <a href="#">
-                            <img class="media-object img-circle" th:src="${question.getUser().getAvatarUrl()}">
-                        </a>
+                        <img class="media-object img-rounded" th:src="${question.getUser().getAvatarUrl()}">
                     </div>
                     <div class="media-body">
-                        <h3 class="media-heading" th:text="${question.getTitle()}"></h3>
-                        <span th:text="${question.getContent()}"></span><br>
+                        <a class="media-heading media-head" th:href="@{'/question/details/'+${question.getId()}}" th:text="${question.getTitle()}">
+                        </a>
                         <span class="media-text">
                             • <span th:text="${question.getCommentCount()}"></span>个回复
                             • <span th:text="${question.getViewCount()}"></span>次浏览
@@ -34,18 +30,29 @@
                         </span>
                     </div>
                 </div>
+
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:if="${section=='replies'}" th:each="notification :${paginationDTO.data}" >
+                        <div class="media-body notify">
+                            <div class="media-heading">
+                                <span  th:text="${notification.notifierName+' '+notification.typeName}"></span>
+                                <a class="media-heading media-head"
+                                   th:href="@{'/notification/'+${notification.getId()}}"
+                                   th:text="${notification.outerTitle}">
+                                </a>
+                                <span class="label label-danger radius" th:if="${notification.status==0}">未读</span>
+                            </div>
+                        </div>
+                </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" >
                 <div class="list-group">
-                    <a th:href="@{'/profile?action=questions'}" th:class="${section=='questions'} ? 'active list-group-item':'list-group-item'">
+                    <a th:href="@{/profile/questions}" th:class="${section=='questions'} ? 'active list-group-item':'list-group-item'">
                         我的问题</a>
-                    <a th:href="@{'/profile?action=replies'}" th:class="${section=='replies'} ? 'active list-group-item':'list-group-item'">
+                    <a th:href="@{/profile/replies}" th:class="${section=='replies'} ? 'active list-group-item':'list-group-item'">
                         最新回复
-                    <span class="badge">15</span>
+                    <span class="badge" th:text="${session.unreadCount}"></span>
                     </a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
                 </div>
             </div>
         </div>
@@ -54,6 +61,7 @@
 
 </body>
 <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 <script>
     layui.use('laypage', function(){
@@ -65,13 +73,13 @@
             limit:[[${paginationDTO.pageSize}]],
             curr:[[${paginationDTO.currentPage}]],
             groups:3,
-            prev:'上一页',
-            next:'下一页',
+            prev:'&lt',
+            next:'&gt',
             layout:['count','prev','page','next','limit','refresh','skip'],
             jump: function(obj, first){
                 if(!first){
-                    // $("#${param.bodyID}").load("${url}?pageNo="+obj.curr+"&pageSize="+obj.limit);
-                    location.href="/profile/?currentPage="+obj.curr+"&pageSize="+obj.limit+"&action="+action
+                   // $("#${param.bodyID}").load("${url}?pageNo="+obj.curr+"&pageSize="+obj.limit);
+                    location.href="/profile/"+action+"?currentPage="+obj.curr+"&pageSize="+obj.limit;
                 }
             }
         });

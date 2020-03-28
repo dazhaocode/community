@@ -4,43 +4,48 @@
     <meta charset="UTF-8">
     <title>common</title>
 </head>
-<body>
-    <!--navbar-->
+<!--navbar-->
+
     <nav class="navbar navbar-default" th:fragment="navbar">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" th:href="@{/index}" >微社区</a>
+        <div class="container">
+            <a class="navbar-brand nav-cus" th:href="@{/index}">微社区</a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="搜索话题">
+                    </div>
+                    <button type="submit" class="btn btn-customize"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li th:if="${session.CurrentUser!=null}">
+                        <a th:href="@{/publish}">发布问题</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/profile/replies}">
+                            最新回复
+                            <span class="badge badge-danger" th:text="${session.unreadCount}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${session.CurrentUser==null}">
+                        <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">
+                            登录</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" aria-expanded="false" th:if="${session.CurrentUser!=null}">
+                            <span th:text="${session.CurrentUser.getName()}"></span>
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a th:href="@{'/profile/questions'}">我的问题</a></li>
+                            <li class="dropdown-item"><a href="#">个人资料</a></li>
+                            <li class="dropdown-item"><a th:href="@{/logOut}">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索话题">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li th:if="${session.CurrentUser!=null}">
-                    <a th:href="@{/publish}">发布问题</a>
-                </li>
-                <li th:if="${session.CurrentUser==null}">
-                    <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">
-                        登录</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" aria-expanded="false" th:if="${session.CurrentUser!=null}">
-                        <span th:text="${session.CurrentUser.getName()}"></span>
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a th:href="@{'/profile?action=questions'}">我的问题</a></li>
-                        <li><a href="#">个人资料</a></li>
-                        <li><a th:href="@{/logOut}">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 </body>
 </html>

@@ -20,15 +20,19 @@
     update QUESTION
     <set>
       <if test="commentCount != null">
-        COMMENT_COUNT =COMMENT_COUNT+ #{commentCount,jdbcType=INTEGER},
+        COMMENT_COUNT =COMMENT_COUNT+ #{commentCount,jdbcType=BIGINT},
       </if>
       <if test="viewCount != null">
-        VIEW_COUNT = VIEW_COUNT+ #{viewCount,jdbcType=INTEGER},
+        VIEW_COUNT = VIEW_COUNT+ #{viewCount,jdbcType=BIGINT},
       </if>
       <if test="likeCount != null">
-        LIKE_COUNT = LIKE_COUNT+#{likeCount,jdbcType=INTEGER},
+        LIKE_COUNT = LIKE_COUNT+#{likeCount,jdbcType=BIGINT},
       </if>
     </set>
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectRelated" resultMap="BaseResultMap" parameterType="com.alan.community.model.Question">
+    select * from QUESTION
+    where ID!=#{id} and TAG regexp #{tag}
+  </select>
 </mapper>

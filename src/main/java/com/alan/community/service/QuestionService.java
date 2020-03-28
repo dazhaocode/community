@@ -15,9 +15,11 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author alan
@@ -36,6 +38,7 @@ public class QuestionService {
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         PageHelper.startPage(paginationDTO.getCurrentPage(),paginationDTO.getPageSize());
         QuestionExample questionExample = new QuestionExample();
+        questionExample.setOrderByClause("gmt_create desc");
         List<Question> questionList;
         if (creatorId != null) {
             questionExample.createCriteria().andCreatorIdEqualTo(creatorId);
@@ -50,7 +53,7 @@ public class QuestionService {
             questionDTOS.add(questionDTO);
         }
         paginationDTO.setTotalRows(total);
-        paginationDTO.setQuestionDTOS(questionDTOS);
+        paginationDTO.setData(questionDTOS);
         return paginationDTO;
     }
 
@@ -93,5 +96,22 @@ public class QuestionService {
         question.setId(id);
         question.setViewCount(1L);
         questionExtMapper.incrViewOrCommentOrLike(question);
+    }
+
+    public List<QuestionDTO> selectRelated(QuestionDTO queryDTO) {
+        if (StringUtils.isEmptyOrWhitespace(queryDTO.getTag())) {
+            return new ArrayList<>();
+        }
+        String regexpTag = StringUtils.replace(queryDTO.getTag(), ",", "|");
+        Question question = new Question();
+        question.setId(queryDTO.getId());
+        question.setTag(regexpTag);
+        List<Question> questions = questionExtMapper.selectRelated(question);
+        List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
+            QuestionDTO questionDTO = new QuestionDTO();
+             BeanUtils.copyProperties(q,questionDTO);
+             return  questionDTO;
+        }).collect(Collectors.toList());
+        return  questionDTOS;
     }
 }

@@ -4,6 +4,7 @@ import com.alan.community.dto.PaginationDTO;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
 import com.alan.community.model.User;
+import com.alan.community.service.NotificationService;
 import com.alan.community.service.QuestionService;
 import com.github.pagehelper.PageHelper;
 import com.sun.org.apache.regexp.internal.RE;
@@ -28,8 +29,10 @@ public class ProfileController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping("/profile")
-    public String profile(@RequestParam("action")String action, Model model,HttpServletRequest request,PaginationDTO pageDTO){
+    @Autowired
+    private NotificationService notificationService;
+    @GetMapping("/profile/{action}")
+    public String profile(@PathVariable("action")String action, Model model,HttpServletRequest request,PaginationDTO pageDTO){
         User user = (User) request.getSession().getAttribute("CurrentUser");
         if (user==null){
             return "redirect:/";
@@ -44,6 +47,8 @@ public class ProfileController {
         }else if ("replies".equals(action)){
             model.addAttribute("section","replies");
             model.addAttribute("sectionName","最新回复");
+            PaginationDTO paginationDTO = notificationService.queryAllNotify(pageDTO,user.getId());
+            model.addAttribute("paginationDTO",paginationDTO);
             model.addAttribute("action",action);
         }
 

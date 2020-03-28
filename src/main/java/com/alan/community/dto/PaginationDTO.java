@@ -9,10 +9,10 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class PaginationDTO {
+public class PaginationDTO<T> {
 
     private Integer currentPage;
-    private List<QuestionDTO> questionDTOS;
+    private List<T> data;
     private Integer pageSize;
     private Integer totalRows;
 
