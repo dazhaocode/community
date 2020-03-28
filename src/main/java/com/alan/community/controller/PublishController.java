@@ -41,7 +41,7 @@ public class PublishController {
           return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
         String filterInvalid = TagCache.filterInvalid(question.getTag());
-        if (StringUtils.isEmptyOrWhitespace(filterInvalid)) {
+        if (!StringUtils.isEmptyOrWhitespace(filterInvalid)) {
             return ResultDTO.errorOf(CustomizeErrorCode.INVALID_TAG);
         }
         question.setCreatorId(user.getId());

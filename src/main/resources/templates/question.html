@@ -6,12 +6,17 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}"/>
     <link rel="stylesheet" th:href="@{/css/community.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/editor/css/editormd.preview.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/lib/layui/css/layui.css}"/>
     <script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
     <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/moment.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/community.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/editor/editormd.min.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/editor/lib/marked.min.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/editor/lib/prettify.min.js}"></script>
+
 </head>
 <body class="body">
 <div th:replace="common::navbar"></div>
@@ -32,8 +37,15 @@
                 <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                     <input type="text" hidden th:id="questionId" th:value="${question.getId()}">
                     <input type="text" hidden th:id="userId" th:value="${question.getUser().getId()}">
-                    <div th:text="${question.getContent()}"></div>
+                    <div th:id="question-preview" >
+                        <textarea th:text="${question.getContent()}" style="display: none" cols="30" rows="10"></textarea>
+                    </div>
                 </div>
+                <script>
+                    $(function () {
+                         editormd.markdownToHTML("question-preview",{});
+                    });
+                </script>
                 <!--标签-->
                 <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                     <span  class="label label-info question-tag" th:each="tag :${question.getTag().split(',')}">
