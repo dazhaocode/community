@@ -1,0 +1,111 @@
+2020-03-29 16:51:34.683  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 11588 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:51:34.684  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:51:35.420  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:51:35.421  INFO 11588 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:51:35.421  INFO 11588 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:51:35.510  INFO 11588 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:51:35.510  INFO 11588 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 821 ms
+2020-03-29 16:51:35.522  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2020-03-29 16:51:35.536  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2020-03-29 16:51:35.536  INFO 11588 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:51:35.803  INFO 11588 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:35.817  INFO 11588 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:51:36.029  INFO 11588 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:51:36.045  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:51:36.045  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 1.398 seconds (JVM running for 303.034)
+2020-03-29 16:51:36.047  INFO 11588 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-03-29 16:51:49.678  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 15244 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:51:49.679  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:51:49.751  WARN 15244 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-03-29 16:51:49.812  INFO 15244 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-29 16:51:49.812  INFO 15244 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-29 16:51:51.742  INFO 15244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:51:51.751  INFO 15244 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:51:51.752  INFO 15244 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:51:51.907  INFO 15244 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:51:51.907  INFO 15244 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2095 ms
+2020-03-29 16:51:51.957  INFO 15244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-29 16:51:52.144  INFO 15244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-29 16:51:52.150  INFO 15244 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:51:52.927  INFO 15244 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:52.996  INFO 15244 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:51:53.331  INFO 15244 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:51:53.381  INFO 15244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:51:53.389  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 4.456 seconds (JVM running for 6.371)
+2020-03-29 16:51:59.818  INFO 15244 --- [http-nio-8887-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-29 16:51:59.818  INFO 15244 --- [http-nio-8887-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-29 16:51:59.828  INFO 15244 --- [http-nio-8887-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-03-29 16:51:59.964 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.Q.selectBySearch_COUNT           : ==>  Preparing: SELECT count(0) FROM QUESTION 
+2020-03-29 16:51:59.987 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.Q.selectBySearch_COUNT           : ==> Parameters: 
+2020-03-29 16:52:00.054 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.Q.selectBySearch_COUNT           : <==      Total: 1
+2020-03-29 16:52:00.058 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.Q.selectBySearch                 : ==>  Preparing: select * from QUESTION order by gmt_create desc LIMIT ? 
+2020-03-29 16:52:00.071 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.Q.selectBySearch                 : ==> Parameters: 10(Integer)
+2020-03-29 16:52:00.117 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.Q.selectBySearch                 : <==      Total: 10
+2020-03-29 16:52:00.120 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.122 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.123 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.132 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.133 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.134 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.135 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.138 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.139 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.140 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.140 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.141 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.141 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.142 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.142 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.143 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.143 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.143 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.144 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.144 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.145 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.150 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.151 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.152 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.153 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.153 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.154 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:52:00.155 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:52:00.155 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:52:00.157 DEBUG 15244 --- [http-nio-8887-exec-2] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:54:04.135  INFO 15244 --- [Thread-14] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:54:04.135  INFO 15244 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-03-29 16:54:04.165  INFO 15244 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-03-29 16:54:05.388  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 15244 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:54:05.388  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:54:06.099  INFO 15244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:54:06.100  INFO 15244 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:54:06.100  INFO 15244 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:54:06.145  INFO 15244 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:54:06.145  INFO 15244 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 747 ms
+2020-03-29 16:54:06.164  INFO 15244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-03-29 16:54:06.177  INFO 15244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-03-29 16:54:06.178  INFO 15244 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:54:06.420  INFO 15244 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:54:06.454  INFO 15244 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:54:06.714  INFO 15244 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:54:06.738  INFO 15244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:54:06.739  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 1.441 seconds (JVM running for 139.721)
+2020-03-29 16:54:06.743  INFO 15244 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-03-29 16:57:37.131  INFO 15244 --- [Thread-21] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:57:37.133  INFO 15244 --- [Thread-21] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-03-29 16:57:37.191  INFO 15244 --- [Thread-21] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2020-03-29 16:57:38.133  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 15244 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:57:38.134  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:57:38.415  INFO 15244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:57:38.417  INFO 15244 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:57:38.417  INFO 15244 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:57:38.447  INFO 15244 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:57:38.447  INFO 15244 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 309 ms
+2020-03-29 16:57:38.458  INFO 15244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2020-03-29 16:57:38.468  INFO 15244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2020-03-29 16:57:38.468  INFO 15244 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:57:38.622  INFO 15244 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:57:38.635  INFO 15244 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:57:38.976  INFO 15244 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:57:38.990  INFO 15244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:57:38.991  INFO 15244 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 0.891 seconds (JVM running for 351.973)
+2020-03-29 16:57:38.993  INFO 15244 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

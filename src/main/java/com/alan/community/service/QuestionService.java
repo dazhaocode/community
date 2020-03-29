@@ -2,6 +2,7 @@ package com.alan.community.service;
 
 import com.alan.community.dto.PaginationDTO;
 import com.alan.community.dto.QuestionDTO;
+import com.alan.community.dto.SearchDTO;
 import com.alan.community.exception.CustomizeErrorCode;
 import com.alan.community.exception.CustomizeException;
 import com.alan.community.mapper.QuestionExtMapper;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,16 +36,16 @@ public class QuestionService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
-    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO, Long creatorId) {
+    public PaginationDTO queryAllQuestion(PaginationDTO paginationDTO, SearchDTO searchDTO) {
+        if (!StringUtils.isEmptyOrWhitespace(searchDTO.getSearch())) {
+            String[] split = StringUtils.split(searchDTO.getSearch(), " ");
+            String search = Arrays.stream(split).collect(Collectors.joining("|"));
+            searchDTO.setSearch(search);
+        }
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         PageHelper.startPage(paginationDTO.getCurrentPage(),paginationDTO.getPageSize());
-        QuestionExample questionExample = new QuestionExample();
-        questionExample.setOrderByClause("gmt_create desc");
         List<Question> questionList;
-        if (creatorId != null) {
-            questionExample.createCriteria().andCreatorIdEqualTo(creatorId);
-        }
-        questionList= questionMapper.selectByExampleWithBLOBs(questionExample);
+        questionList= questionExtMapper.selectBySearch(searchDTO);
         int total = (int) new PageInfo<>(questionList).getTotal();
         for (Question question : questionList) {
             User user = userMapper.selectByPrimaryKey(question.getCreatorId());

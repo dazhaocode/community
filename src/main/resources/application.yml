@@ -24,6 +24,10 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: countH2
+logging:
+  file:
+    name: logs/community.log
 
-
+  level:
+    com.alan.community.mapper: debug
 

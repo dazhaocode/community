@@ -47,6 +47,9 @@
                                 width  : "100%",
                                 height : "400px",
                                 placeholder:"请输入问题描述....",
+                                imageUpload:true,
+                                imageFormats:["jpg","png","gif"],
+                                imageUploadURL:"/file/upload",
                                 path   : "/lib/editor/lib/"
                             });
                         });
@@ -86,6 +89,7 @@
             </div>
         </div>
     </div>
+    <div th:replace="common::foot"></div>
 </body>
 
 </html>

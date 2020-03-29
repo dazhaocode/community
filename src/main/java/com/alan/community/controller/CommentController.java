@@ -5,7 +5,6 @@ import com.alan.community.dto.ResultDTO;
 import com.alan.community.dto.dbCommentDTO;
 import com.alan.community.enums.CommentTypeEnum;
 import com.alan.community.exception.CustomizeErrorCode;
-import com.alan.community.mapper.QuestionMapper;
 import com.alan.community.model.Comment;
 import com.alan.community.model.User;
 import com.alan.community.service.CommentService;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,5 +50,11 @@ public class CommentController {
         List<dbCommentDTO> commentDTOS = commentService.queryAllByTargetId(id, CommentTypeEnum.COMMENT);
         return ResultDTO.successOf(commentDTOS);
     }
-
+    @RequestMapping("/comment/like")
+    @ResponseBody
+    public ResultDTO like(@RequestBody HashMap<String,Long> map){
+        Long id = map.get("id");
+        commentService.incrLike(id);
+        return ResultDTO.successOf();
+    }
 }

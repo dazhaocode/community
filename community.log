@@ -1,0 +1,191 @@
+2020-03-29 16:46:35.056  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 11588 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:46:35.057  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:46:35.132  INFO 11588 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-03-29 16:46:35.132  INFO 11588 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-03-29 16:46:35.215  WARN 11588 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-03-29 16:46:36.903  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:46:36.914  INFO 11588 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:46:36.914  INFO 11588 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:46:37.037  INFO 11588 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:46:37.037  INFO 11588 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1904 ms
+2020-03-29 16:46:37.080  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-29 16:46:37.230  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-29 16:46:37.236  INFO 11588 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:46:37.793  INFO 11588 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:46:37.852  INFO 11588 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:46:38.134  INFO 11588 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:46:38.181  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:46:38.185  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 3.715 seconds (JVM running for 5.173)
+2020-03-29 16:46:46.820  INFO 11588 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-29 16:46:46.821  INFO 11588 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-29 16:46:46.848  INFO 11588 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 27 ms
+2020-03-29 16:46:47.233 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.Q.selectBySearch_COUNT           : ==>  Preparing: SELECT count(0) FROM QUESTION 
+2020-03-29 16:46:47.314 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.Q.selectBySearch_COUNT           : ==> Parameters: 
+2020-03-29 16:46:47.335 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.Q.selectBySearch_COUNT           : <==      Total: 1
+2020-03-29 16:46:47.337 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.Q.selectBySearch                 : ==>  Preparing: select * from QUESTION order by gmt_create desc LIMIT ? 
+2020-03-29 16:46:47.348 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.Q.selectBySearch                 : ==> Parameters: 10(Integer)
+2020-03-29 16:46:47.400 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.Q.selectBySearch                 : <==      Total: 10
+2020-03-29 16:46:47.405 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.413 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.414 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.470 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.475 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.497 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.498 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.502 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.504 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.505 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.509 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.513 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.515 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.515 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.517 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.518 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.521 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.530 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.531 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.532 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.532 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.534 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.534 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.535 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.541 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.546 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.548 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:46:47.550 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED, BIO, AVATAR_URL from USER where ID = ? 
+2020-03-29 16:46:47.550 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 227(Long)
+2020-03-29 16:46:47.551 DEBUG 11588 --- [http-nio-8887-exec-1] c.a.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-03-29 16:47:18.730  INFO 11588 --- [Thread-13] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:47:18.731  INFO 11588 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-03-29 16:47:18.782  INFO 11588 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-03-29 16:47:19.952  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 11588 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:47:19.953  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:47:20.512  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:47:20.514  INFO 11588 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:47:20.516  INFO 11588 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:47:20.599  INFO 11588 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:47:20.600  INFO 11588 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 644 ms
+2020-03-29 16:47:20.664  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-03-29 16:47:20.681  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-03-29 16:47:20.681  INFO 11588 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:47:21.344  INFO 11588 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:47:21.409  INFO 11588 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:47:21.933  INFO 11588 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:47:21.984  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:47:21.988  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 2.071 seconds (JVM running for 48.977)
+2020-03-29 16:47:21.998  INFO 11588 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-03-29 16:51:17.642  INFO 11588 --- [Thread-20] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:17.644  INFO 11588 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-03-29 16:51:17.690  INFO 11588 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2020-03-29 16:51:18.493  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 11588 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:51:18.495  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:51:18.869  WARN 11588 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.alan.community.mapper]' package. Please check your configuration.
+2020-03-29 16:51:19.790  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:51:19.791  INFO 11588 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:51:19.793  INFO 11588 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:51:20.006  INFO 11588 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:51:20.006  INFO 11588 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1507 ms
+2020-03-29 16:51:20.039  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2020-03-29 16:51:20.053  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2020-03-29 16:51:20.053  INFO 11588 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:51:20.194  INFO 11588 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:20.208  INFO 11588 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:51:20.508  WARN 11588 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+2020-03-29 16:51:20.510  INFO 11588 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:20.510  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2020-03-29 16:51:20.791  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2020-03-29 16:51:20.791  INFO 11588 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-03-29 16:51:20.797  INFO 11588 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-03-29 16:51:20.835 ERROR 11588 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:656) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.alan.community.CommunityApplication.main(CommunityApplication.java:13) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_144]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 24 common frames omitted
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:595) ~[mybatis-spring-2.0.3.jar:2.0.3]
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:475) ~[mybatis-spring-2.0.3.jar:2.0.3]
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:615) ~[mybatis-spring-2.0.3.jar:2.0.3]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:180) ~[mybatis-spring-boot-autoconfigure-2.1.1.jar:2.1.1]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$cf55ccc1.CGLIB$sqlSessionFactory$1(<generated>) ~[mybatis-spring-boot-autoconfigure-2.1.1.jar:2.1.1]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$cf55ccc1$$FastClassBySpringCGLIB$$6c45637f.invoke(<generated>) ~[mybatis-spring-boot-autoconfigure-2.1.1.jar:2.1.1]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244) ~[spring-core-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$cf55ccc1.sqlSessionFactory(<generated>) ~[mybatis-spring-boot-autoconfigure-2.1.1.jar:2.1.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_144]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 25 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\spring-study\community\target\classes\mapper\CommentExtMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:122) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:94) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:593) ~[mybatis-spring-2.0.3.jar:2.0.3]
+	... 38 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:262) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:253) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:245) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:118) ~[mybatis-3.5.3.jar:3.5.3]
+	... 40 common frames omitted
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.alan.community.model.Comment'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116) ~[mybatis-3.5.3.jar:3.5.3]
+	... 44 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.alan.community.model.Comment
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261) ~[mybatis-3.5.3.jar:3.5.3]
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116) ~[mybatis-3.5.3.jar:3.5.3]
+	... 46 common frames omitted
+
+2020-03-29 16:51:24.345  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-DGEBCQUQ with PID 11588 (D:\spring-study\community\target\classes started by alan in D:\spring-study\community)
+2020-03-29 16:51:24.345  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2020-03-29 16:51:24.964  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-03-29 16:51:24.966  INFO 11588 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-29 16:51:24.966  INFO 11588 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-29 16:51:25.020  INFO 11588 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2020-03-29 16:51:25.020  INFO 11588 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 672 ms
+2020-03-29 16:51:25.054  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2020-03-29 16:51:25.064  INFO 11588 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2020-03-29 16:51:25.067  INFO 11588 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2020-03-29 16:51:25.396  INFO 11588 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:25.408  INFO 11588 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-29 16:51:25.599  INFO 11588 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-29 16:51:25.614  INFO 11588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-03-29 16:51:25.614  INFO 11588 --- [restartedMain] com.alan.community.CommunityApplication  : Started CommunityApplication in 1.303 seconds (JVM running for 292.602)
+2020-03-29 16:51:25.616  INFO 11588 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-03-29 16:51:33.254  INFO 11588 --- [Thread-25] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-29 16:51:33.255  INFO 11588 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2020-03-29 16:51:33.283  INFO 11588 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.

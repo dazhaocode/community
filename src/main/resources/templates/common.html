@@ -10,9 +10,9 @@
         <div class="container">
             <a class="navbar-brand nav-cus" th:href="@{/index}">微社区</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left" th:action="@{/}">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="搜索话题">
+                        <input type="text" th:value="${search!=null?search:''}" th:id="searchInput" th:name="search" class="form-control" placeholder="搜索话题">
                     </div>
                     <button type="submit" class="btn btn-customize"><span class="glyphicon glyphicon-search"></span></button>
                 </form>
@@ -21,8 +21,8 @@
                         <a th:href="@{/publish}">发布问题</a>
                     </li>
                     <li>
-                        <a th:href="@{/profile/replies}">
-                            最新回复
+                        <a th:href="@{/profile/replies}" th:if="${session.CurrentUser!=null}">
+                            通知
                             <span class="badge badge-danger" th:text="${session.unreadCount}"></span>
                         </a>
                     </li>
@@ -45,7 +45,9 @@
             </div>
         </div>
     </nav>
-
-
+<!--footer-->
+  <div th:fragment="foot" class="footer">
+      Copyright © 2020 · Small微社区 · 网站程序: Springboot · ICP备0000000号
+  </div>
 </body>
 </html>

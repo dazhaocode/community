@@ -35,4 +35,16 @@
     select * from QUESTION
     where ID!=#{id} and TAG regexp #{tag}
   </select>
+  <select id="selectBySearch" resultMap="BaseResultMap" parameterType="com.alan.community.dto.SearchDTO">
+    select * from QUESTION
+    <where>
+      <if test="search !=null">
+          and title regexp #{search}
+      </if>
+      <if test="currentUser !=null">
+         and creator_id=#{currentUser}
+      </if>
+    </where>
+      order by gmt_create desc
+  </select>
 </mapper>

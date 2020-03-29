@@ -68,9 +68,7 @@
             <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" th:each="comment :${dbCommentDTOS}">
                 <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-border">
                     <div class="media-left">
-                        <a href="#">
                             <img class="media-object img-rounded" th:src="${comment.getUser().getAvatarUrl()}">
-                        </a>
                     </div>
                     <div class="media-body">
                         <h6 class="media-heading">
@@ -78,11 +76,13 @@
                         </h6>
                         <div th:text="${comment.getContent()}"></div>
                         <div class="menu-icon-group">
-                            <span class="glyphicon glyphicon-thumbs-up icon"></span>
+                            <span class="glyphicon glyphicon-thumbs-up icon" onclick="like(this)" th:data-id="${comment.getId()}">
+                            </span>
+                            <span class="likeCount" th:if="${comment.getLikeCount()!=0}"><span th:text="${comment.getLikeCount()}"></span>赞</span>
                             <span class="glyphicon glyphicon-comment icon"
-                                  th:text="${comment.getCommentCount()}"
+                                  th:text="${comment.getCommentCount()!=0?comment.getCommentCount():''}"
                                   onclick="collapseComment(this)" th:data-id="${comment.getId()}">
-                                </span>
+                            </span>
                             <span class="pull-right"
                                   th:text="${#dates.format(comment.getGmtCreate(),'yyyy-MM-dd HH:mm')}"></span>
                         </div>
@@ -106,7 +106,8 @@
                 <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-rounded" th:src="${question.getUser().getAvatarUrl()}">
+                            <img class="media-object img-rounded"
+                                 th:src="${session.CurrentUser!=null? session.CurrentUser.getAvatarUrl():'/images/default_avatar.png'}">
                         </a>
                     </div>
                     <div class="media-body">
@@ -149,6 +150,7 @@
     </div>
 
 </div>
+<div th:replace="common::foot"></div>
 </body>
 
 </html>

@@ -83,7 +83,8 @@ a:hover{
     margin-top: 7px;
 }
 .menu-icon-group .icon{
-    margin-right: 6px;
+    margin-right: 3px;
+    margin-left: 3px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -158,4 +159,12 @@ hr{
 }
 .badge-danger{
     background: #d9534f!important;
+}
+.footer{
+    padding: 15px 34%;
+    color: #666;
+}
+.likeCount{
+    font-size: 12px;
+    color: #999;
 }

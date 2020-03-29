@@ -1,4 +1,20 @@
 
+
+
+function like(e) {
+    let id = e.getAttribute("data-id");
+    $.ajax({
+        method:"POST",
+        url:"/comment/like",
+        contentType:'application/json',
+        data:JSON.stringify({'id':id}),
+        dataType: "json",
+    }).then(r => {
+        if (r.code == 200) {
+            layer.msg("感谢你的点赞！",{time:1000,icon:6})
+        }
+    })
+}
 function commentQuestion() {
      let questionId = $("#questionId").val();
      let content = $("#comment_content").val();

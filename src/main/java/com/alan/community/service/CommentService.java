@@ -85,6 +85,9 @@ public class CommentService {
     }
 
     private void createNotify(Comment comment, Long receiver, String notifierName, String outerTitle, NotificationTypeEnum notificationTypeEnum, Long outerId) {
+        if (comment.getCommentator().equals(receiver)) {
+            return;
+        }
         Notification notification=new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
         notification.setNotifier(comment.getCommentator());
@@ -122,5 +125,12 @@ public class CommentService {
         }).collect(Collectors.toList());
 
         return commentDTOS;
+    }
+
+    public void incrLike(Long id) {
+        Comment comment = new Comment();
+        comment.setLikeCount(1L);
+        comment.setId(id);
+        commentExtMapper.incrViewOrCommentOrLike(comment);
     }
 }

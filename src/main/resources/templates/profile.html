@@ -59,7 +59,7 @@
         </div>
         <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" id="page"></div>
     </div>
-
+    <div th:replace="common::foot"></div>
 </body>
 <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/lib/layui/layui.all.js}"></script>
@@ -76,7 +76,7 @@
             groups:3,
             prev:'&lt',
             next:'&gt',
-            layout:['count','prev','page','next','limit','refresh','skip'],
+            layout:['count','prev','page','next','limit'],
             jump: function(obj, first){
                 if(!first){
                    // $("#${param.bodyID}").load("${url}?pageNo="+obj.curr+"&pageSize="+obj.limit);

@@ -1,6 +1,7 @@
 package com.alan.community.controller;
 
 import com.alan.community.dto.PaginationDTO;
+import com.alan.community.dto.SearchDTO;
 import com.alan.community.mapper.UserMapper;
 import com.alan.community.model.Question;
 import com.alan.community.model.User;
@@ -41,7 +42,9 @@ public class ProfileController {
         if ("questions".equals(action)) {
             model.addAttribute("section","questions");
             model.addAttribute("sectionName","我的提问");
-            PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO,user.getId());
+            SearchDTO searchDTO = new SearchDTO();
+            searchDTO.setCurrentUser(((User) request.getSession().getAttribute("CurrentUser")).getId());
+            PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO, searchDTO);
             model.addAttribute("paginationDTO",paginationDTO);
             model.addAttribute("action",action);
         }else if ("replies".equals(action)){
