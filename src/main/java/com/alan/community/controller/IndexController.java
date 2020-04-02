@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.util.StringUtils;
 
 /**
@@ -18,7 +19,7 @@ public class IndexController {
 
     @Autowired
     private QuestionService questionService;
-    @GetMapping({"/","/index"})
+    @RequestMapping({"/","/index"})
     public String toIndex(Model model, PaginationDTO pageDTO, SearchDTO searchDTO){
 
         PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO, searchDTO);

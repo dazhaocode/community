@@ -63,7 +63,7 @@ public class AuthorizeController {
             userService.addOrUpdateUser(user);
             //login success
             response.addCookie(new Cookie("token",token));
-            return "redirect:/";
+            return "redirect:/index";
         }else {
             //login fail
             return "redirect:/";
