@@ -8,10 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CommunityApplicationTests {
 
 
-    @Test
-    void contextLoads() {
-
-        }
     }
 
 
