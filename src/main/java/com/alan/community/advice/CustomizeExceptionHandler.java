@@ -23,37 +23,37 @@ import java.io.PrintWriter;
 @ControllerAdvice
 public class CustomizeExceptionHandler {
 
-//    @ExceptionHandler(Exception.class)
-//    ModelAndView handleControllerException(Throwable ex, Model model,HttpServletRequest request,HttpServletResponse response) {
-//        String contentType = request.getContentType();
-//        ResultDTO resultDTO;
-//        if (contentType != null && contentType.equals("application/json")) {
-//            //返回json
-//            //这个地方存在一定不需要成分 待思考。。。。
-//            if (ex instanceof CustomizeException) {
-//                resultDTO = ResultDTO.errorOf((CustomizeException) ex);
-//            } else {
-//                resultDTO = ResultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
-//            }
-//            try {
-//                response.setContentType("application/json");
-//                response.setStatus(200);
-//                response.setCharacterEncoding("utf-8");
-//                PrintWriter writer = response.getWriter();
-//                writer.write(JSON.toJSONString(resultDTO));
-//                writer.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        } else {
-//            //页面跳转
-//            if (ex instanceof CustomizeException)
-//                model.addAttribute("msg", ((CustomizeException) ex).getMsg());
-//            else
-//                model.addAttribute("msg", CustomizeErrorCode.SYS_ERROR.getMsg());
-//            return new ModelAndView("error");
-//        }
+    @ExceptionHandler(Exception.class)
+    ModelAndView handleControllerException(Throwable ex, Model model,HttpServletRequest request,HttpServletResponse response) {
+        String contentType = request.getContentType();
+        ResultDTO resultDTO;
+        if (contentType != null && contentType.equals("application/json")) {
+            //返回json
+            //这个地方存在一定不需要成分 待思考。。。。
+            if (ex instanceof CustomizeException) {
+                resultDTO = ResultDTO.errorOf((CustomizeException) ex);
+            } else {
+                resultDTO = ResultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
+            }
+            try {
+                response.setContentType("application/json");
+                response.setStatus(200);
+                response.setCharacterEncoding("utf-8");
+                PrintWriter writer = response.getWriter();
+                writer.write(JSON.toJSONString(resultDTO));
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        } else {
+            //页面跳转
+            if (ex instanceof CustomizeException)
+                model.addAttribute("msg", ((CustomizeException) ex).getMsg());
+            else
+                model.addAttribute("msg", CustomizeErrorCode.SYS_ERROR.getMsg());
+            return new ModelAndView("error");
+        }
 
 
 //    private HttpStatus getStatus(HttpServletRequest request) {
@@ -64,6 +64,7 @@ public class CustomizeExceptionHandler {
 //        return HttpStatus.valueOf(statusCode);
 //    }
     }
+}
 
 
 
