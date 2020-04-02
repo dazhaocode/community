@@ -28,6 +28,4 @@ logging:
   file:
     name: logs/community.log
 
-  level:
-    com.alan.community.mapper: debug
 

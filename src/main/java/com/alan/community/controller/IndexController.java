@@ -21,7 +21,8 @@ public class IndexController {
     @GetMapping({"/","/index"})
     public String toIndex(Model model, PaginationDTO pageDTO, SearchDTO searchDTO){
 
-        PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO,searchDTO);
+        PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO, searchDTO);
+
         model.addAttribute("paginationDTO",paginationDTO);
         model.addAttribute("search",searchDTO.getSearch());
         return "index";

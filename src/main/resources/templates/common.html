@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li th:if="${session.CurrentUser==null}">
-                        <a href="https://gitee.com/oauth/authorize?client_id=86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037&redirect_uri=http://localhost:8887/callback&response_type=code&scope=user_info">
+                        <a th:href="@{https://gitee.com/oauth/authorize(client_id='86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037',redirect_uri=${#httpServletRequest.getRequestURL()+'callback'},response_type='code',scope='user_info')}">
                             登录</a>
                     </li>
                     <li class="dropdown">

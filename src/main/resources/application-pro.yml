@@ -1,12 +1,11 @@
 server:
-  port: 8887
-
+  port: 80
 
 gitee:
   client:
     id: 86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037
     secret:  094b42a21628003d3664d981218ad27fbad9ff1c6a8e7bac373f9b8d2a4f64ab
-    redirect: http://localhost:8887/callback
+    redirect: http://39.97.239.205/callback
     Grant_type: authorization_code
 spring:
   datasource:
@@ -28,6 +27,5 @@ logging:
   file:
     name: logs/community.log
 
-  level:
-    com.alan.community.mapper: debug
+
 
