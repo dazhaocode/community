@@ -19,7 +19,7 @@ public class IndexController {
 
     @Autowired
     private QuestionService questionService;
-    @RequestMapping("/")
+    @RequestMapping({"/","/index"})
     public String toIndex(Model model, PaginationDTO pageDTO, SearchDTO searchDTO){
 
         PaginationDTO paginationDTO = questionService.queryAllQuestion(pageDTO, searchDTO);
