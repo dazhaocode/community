@@ -8,7 +8,7 @@
 
     <nav class="navbar navbar-default" th:fragment="navbar">
         <div class="container">
-            <a class="navbar-brand nav-cus" th:href="@{/index}">微社区</a>
+            <a class="navbar-brand nav-cus" th:href="@{/}">微社区</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <form class="navbar-form navbar-left" th:action="@{/}">
                     <div class="form-group">
@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li th:if="${session.CurrentUser==null}">
-                        <a th:href="@{https://gitee.com/oauth/authorize(client_id='86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037',redirect_uri=${#httpServletRequest.getRequestURL()+'callback'},response_type='code',scope='user_info')}">
+                        <a th:href="@{https://gitee.com/oauth/authorize(client_id='86e31cde3d5e729da75a2bbfd18c4e0dd069136c8e8191e673ef1cc881ecb037',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('redirectUri')},response_type='code',scope='user_info')}">
                             登录</a>
                     </li>
                     <li class="dropdown">
