@@ -11,7 +11,7 @@ spring:
   datasource:
     username: root
     password: admin
-    url: jdbc:h2:~/community
+    url: jdbc:h2:./db/community
     driver-class-name: org.h2.Driver
 mybatis:
   configuration:

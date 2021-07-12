@@ -2,23 +2,16 @@ package com.alan.community.controller;
 
 import com.alan.community.dto.PaginationDTO;
 import com.alan.community.dto.SearchDTO;
-import com.alan.community.mapper.UserMapper;
-import com.alan.community.model.Question;
 import com.alan.community.model.User;
 import com.alan.community.service.NotificationService;
 import com.alan.community.service.QuestionService;
-import com.github.pagehelper.PageHelper;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+
 
 /**
  * @author alan
